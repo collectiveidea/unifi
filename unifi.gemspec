@@ -7,20 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "unifi"
   spec.version       = Unifi::VERSION
   spec.authors       = ["Jon Stokes"]
-  spec.email         = ["jon@jonstokes.com"]
+  spec.email         = ["jon@collectiveidea.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A ruby client for the Unifi AP Controller software, v4.}
+  spec.homepage      = "http://github.com/collectiveidea/unifi"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
@@ -30,4 +21,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
+
+  spec.add_dependency "faraday", "~> 0.9.2"
+  spec.add_dependency "troupe", "~> 0.1.0"
+  spec.add_dependency "addressable", "~> 2.4.0"
+  spec.add_dependency "faraday-cookie_jar", "~> 0.0.6"
 end
