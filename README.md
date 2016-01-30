@@ -20,7 +20,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a connection to a Unifi AP controller as follows:
+
+```ruby
+controller = Unifi::Controller.new(host: 'my.unificontroller.com')
+```
+
+Other options for the controller are:
+- `port`: In case you're not using the default `8443`
+- `site`: If you've changed the name of your site from `default`, put the site id here.
+
+Currently, the gem supports the following methods, which are named for and map directly to Unifi Controller API commands:
+
+### login
+
+Call this first, and be sure that the following, self-explanator ENV variables are set: UNIFI_USER, UNIFI_PASSWORD. If you don't `login` first, none of your other commands will be authorized.
+
+### logout
+
+Call this last to close the session.
+
+### authorize_guest
+Required arguments:
+- `mac`: Guest MAC address
+- `minutes`: number of minutes to authorize the guest for
+
+Optional arguments
+- `up`: Bandwidth limit up in Kbps
+- `down`: Bandwidth limit down in Kbps
+
+### unauthorize_guest
+Required arguments:
+- `mac`: Guest MAC address
 
 ## Development
 
