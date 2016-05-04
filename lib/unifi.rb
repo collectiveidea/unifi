@@ -14,6 +14,4 @@ require 'unifi/authorize_guest'
 require 'unifi/unauthorize_guest'
 require 'unifi/list_clients'
 
-module Unifi
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-end
+#
