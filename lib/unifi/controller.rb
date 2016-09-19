@@ -42,6 +42,11 @@ module Unifi
       interactor.response.body["data"]
     end
 
+    def devices
+      interactor = Unifi::ListDevices.call(site: site, conn: conn)
+      interactor.response.body["data"]
+    end
+
     private
     attr_accessor :conn
   end
