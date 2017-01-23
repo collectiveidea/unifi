@@ -10,7 +10,8 @@ module Unifi
         ssl: { verify: false }
       ) do |faraday|
         faraday.use      :cookie_jar
-        faraday.response :logger
+        # faraday.response :logger
+        faraday.response :json, content_type: /\bjson$/
         faraday.adapter  Faraday.default_adapter
       end
     end
@@ -34,6 +35,16 @@ module Unifi
     def unauthorize_guest(opts)
       interactor = Unifi::UnauthorizeGuest.call(opts.merge(site: site, conn: conn))
       interactor.response
+    end
+
+    def clients
+      interactor = Unifi::ListClients.call(site: site, conn: conn)
+      interactor.response.body["data"]
+    end
+
+    def devices
+      interactor = Unifi::ListDevices.call(site: site, conn: conn)
+      interactor.response.body["data"]
     end
 
     private
